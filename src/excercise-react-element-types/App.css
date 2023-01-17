@@ -1,0 +1,29 @@
+.el-types-content {
+    background-color: antiquewhite;
+    color: brown;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.el-types-header {
+    background-color: rgb(244, 183, 103);
+    color: rgb(7, 7, 7);
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.el-types-footer {
+    background-color: rgb(251, 142, 0);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
