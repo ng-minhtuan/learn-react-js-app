@@ -16,6 +16,7 @@ import ExerciseUseRef from './exercise-hook-useRef/App';
 import ExerciseReactMemoHOC from './exercise-react-memo/App';
 import ExerciseUseCallbackHook from './exercise-useCallback-hook/App';
 import ExerciseUseMemoHook from './exercise-useMemo-hook/App';
+import ExerciseUseReducer from './exercise-hook-useReducer/App';
 
 /* ------------------ Bài : React Element types------------------ */
 const rootExerciseElementTypes = ReactDOM.createRoot(document.getElementById('exercise-element-types'));
@@ -129,6 +130,13 @@ const rootExerciseUseMemoHook=ReactDOM.createRoot(document.getElementById('exerc
 rootExerciseUseMemoHook.render(
     <React.StrictMode>
         <ExerciseUseMemoHook/>
+    </React.StrictMode>
+)
+
+const rootExerciseUseReducerHook=ReactDOM.createRoot(document.getElementById('exercise-useReducer-hook'));
+rootExerciseUseReducerHook.render(
+    <React.StrictMode>
+        <ExerciseUseReducer/>
     </React.StrictMode>
 )
 // If you want to start measuring performance in your app, pass a function

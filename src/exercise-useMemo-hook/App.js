@@ -1,4 +1,5 @@
 import React from "react";
+import ContentExercise from "./Content";
 
 const styleDiv = {
 	margin: '0 2%',
@@ -57,7 +58,7 @@ export default function ExerciseUseMemoHook(){
 				>
 				</div>
 				{
-					mounted && 'abc'
+					mounted && <ContentExercise/>
 				}
 			</div>
 		</React.Fragment>
