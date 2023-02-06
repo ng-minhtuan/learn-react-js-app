@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 
 const styleDiv = {
 	margin: '0 2%',
@@ -65,11 +65,32 @@ const SET_JOB = 'set_job';
 const ADD_JOB = 'add_job';
 const REMOVE_JOB = 'remove_job';
 
+const handleSetJob = payload => {
+	return {
+		type : SET_JOB,
+		payload,
+	}
+}
+
+const handleAddJob = (payload) => {
+	return {
+		type: ADD_JOB,
+		payload,
+	}
+}
+
 /**
  * Reducer
  */
 const reducerTodoApp = (state, action) => {
-	return state;
+	switch (action.type){
+		case SET_JOB:
+			return {...state, job : action.payload};
+		case ADD_JOB:
+			return {...state, listJobs: [...state.listJobs, action.payload]};
+		default: 
+			throw new Error('Invalid Action !');
+	}
 }
 
 /**
@@ -80,6 +101,14 @@ export default function TodoAppUseReducer() {
 	const [state, dispatchTodoApp] = useReducer(reducerTodoApp, initStateJobs);
 
 	const {job, listJobs} = state;
+
+	const inputRef = useRef();
+
+	const handleSubmit = ()=>{
+		dispatchTodoApp(handleAddJob(job));
+		dispatchTodoApp(handleSetJob(''));
+		inputRef.current.focus();
+	}
 
 	return (
 		<div
@@ -107,22 +136,25 @@ export default function TodoAppUseReducer() {
 
 			<input
 				type="text"
-				placeholder="Task...."
+				placeholder="Enter Todo...."
 				value={job}
-				onChange				
+				ref={inputRef}
+				onChange={	
+					(e)=> dispatchTodoApp(handleSetJob(e.target.value))
+				}				
 				style={styleInput}
 			/>
 
 			<div style={{ ...styleDiv, border: '', flexDirection: 'row', height: 'fit-content', minHeight: '' }}>
 				<button
 					style={styleButton}
-					onClick
+					onClick={handleSubmit}
 				>
 					Add Task
 				</button>
 				<button
 					style={{ ...styleButton, border: '1px solid green', color: 'green' }}
-					onClick
+					
 				>
 					Remove Task
 				</button>
